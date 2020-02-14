@@ -1,0 +1,26 @@
+*********OPENMP***************500 1
+time taken by LU decomposition: 166903
+*********OPENMP***************1000 1
+time taken by LU decomposition: 1252892
+*********OPENMP***************2000 1
+time taken by LU decomposition: 9988544
+*********OPENMP***************4000 1
+time taken by LU decomposition: 81527948
+*********OPENMP***************8000 1
+time taken by LU decomposition: 5878168688
+*********OPENMP***************500 1
+time taken by LU decomposition: 159065
+*********OPENMP***************1000 1
+time taken by LU decomposition: 1256991
+*********OPENMP***************2000 1
+time taken by LU decomposition: 10553494
+*********OPENMP***************4000 1
+time taken by LU decomposition: 89416599
+*********OPENMP***************8000 1
+time taken by LU decomposition: 682592595
+*********OPENMP***************8000 2
+time taken by LU decomposition: 360516431
+*********OPENMP***************8000 4
+time taken by LU decomposition: 199789542
+*********OPENMP***************8000 8
+time taken by LU decomposition: 241085064

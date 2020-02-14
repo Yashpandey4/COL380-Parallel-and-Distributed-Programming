@@ -1,0 +1,50 @@
+***********PTHREADS*************500 1
+time taken by LU decomposition: 337990
+***********PTHREADS*************1000 1
+time taken by LU decomposition: 2196433
+***********PTHREADS*************2000 1
+time taken by LU decomposition: 12488279
+***********PTHREADS*************4000 1
+time taken by LU decomposition: 95865181
+***********PTHREADS*************8000 1
+time taken by LU decomposition: 750239139
+***********PTHREADS*************500 2
+time taken by LU decomposition: 184659
+***********PTHREADS*************1000 2
+time taken by LU decomposition: 1040094
+***********PTHREADS*************2000 2
+time taken by LU decomposition: 6751338
+***********PTHREADS*************4000 2
+time taken by LU decomposition: 50503975
+***********PTHREADS*************8000 2
+time taken by LU decomposition: 402090099
+***********PTHREADS*************500 4
+time taken by LU decomposition: 186580
+***********PTHREADS*************1000 4
+time taken by LU decomposition: 992238
+***********PTHREADS*************2000 4
+time taken by LU decomposition: 6160120
+***********PTHREADS*************4000 4
+time taken by LU decomposition: 43337454
+***********PTHREADS*************8000 4
+time taken by LU decomposition: 296208879
+***********PTHREADS*************500 8
+time taken by LU decomposition: 137782
+***********PTHREADS*************1000 8
+time taken by LU decomposition: 714230
+***********PTHREADS*************2000 8
+time taken by LU decomposition: 4399711
+***********PTHREADS*************4000 8
+time taken by LU decomposition: 31087262
+***********PTHREADS*************8000 8
+time taken by LU decomposition: 220125232
+***********PTHREADS*************500 16
+time taken by LU decomposition: 207544
+***********PTHREADS*************1000 16
+time taken by LU decomposition: 818238
+***********PTHREADS*************2000 16
+time taken by LU decomposition: 4287706
+***********PTHREADS*************4000 16
+time taken by LU decomposition: 27776949
+***********PTHREADS*************8000 16
+time taken by LU decomposition: 213664072

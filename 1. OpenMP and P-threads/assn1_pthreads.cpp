@@ -7,6 +7,9 @@ using namespace chrono;
 #define forn(i,n) for(int i=0; i < n; i++)
 
 int n, num_thread;
+bool randomize = false;
+string testcase="";
+ofstream output_P, output_L, output_U;
 double delta = 0.000000001;                            // very small value
 
 typedef struct thread_arguments {                      // arguments passed into each thread
@@ -19,9 +22,13 @@ typedef struct thread_arguments {                      // arguments passed into 
 
 void initialize_A(double** A, double** Areal)
 {                                                      // initializing the input matrix, making a copy for future reference
+    ifstream input(testcase);
     forn(i,n)
         forn(j,n){
-            A[i][j] = drand48() * 100;
+            if(randomize)
+                A[i][j] = drand48() * 100;
+            else 
+                input>>A[i][j];
             Areal[i][j] = A[i][j];                     // Keeping a copy of the original matrix (before its modified)
         }
 }
@@ -44,14 +51,15 @@ void initialize_L(double** L)
                 L[i][j] = 1.0;
 }
 
-void print_matrix(double** matrix)
-{                                                     // printing given matrix
+string print_matrix(double** matrix)
+{
+    ostringstream ss;                                                     // printing given matrix
     forn(i,n){
         forn(j,n)
-            cout << matrix[i][j] << " ";
-        cout << endl;
+            ss << matrix[i][j] << " ";
+        ss << endl;
     }
-    cout << "--------------------------" << endl;
+    return ss.str();
 }
 
 double **create_matrix()
@@ -103,8 +111,11 @@ void* thread_computation(void* input)
 
 void lu_decomposition()
 {
+    output_P.open("P_"+to_string(n)+"_"+to_string(num_thread)+"threads.txt");    // files to save P,L and U matrix
+    output_L.open("L_"+to_string(n)+"_"+to_string(num_thread)+"threads.txt");
+    output_U.open("U_"+to_string(n)+"_"+to_string(num_thread)+"threads.txt");
 
-auto t1 = high_resolution_clock::now();             // starting timer
+    auto t1 = high_resolution_clock::now();             // starting timer
     int* pi = (int*)malloc(n * sizeof(int));
     double** P = create_matrix(),**A = create_matrix(),
         **Areal = create_matrix(),**U = create_matrix(),**L = create_matrix();
@@ -165,13 +176,13 @@ auto t1 = high_resolution_clock::now();             // starting timer
 
     auto t2 = high_resolution_clock::now();           // finishing timer
     cout<<"time taken by LU decomposition: "<<
-    duration_cast<microseconds>( t2 - t1 ).count()<<"\n"; // printing the time taken (in microseconds)
+    duration_cast<microseconds>( t2 - t1 ).count()<<"\xC2\xB5s\n"; // printing the time taken (in microseconds)
 
-    // cout << calculate_residue(P, Areal, L, U)<<"\n";
-    // print_matrix(P);
-    // print_matrix(Areal);
-    // print_matrix(L);
-    // print_matrix(U);
+    // cout << "Residue: " << calculate_residue(P, Areal, L, U) << "\n";
+
+    output_P<<print_matrix(P);
+    output_L<<print_matrix(L);
+    output_U<<print_matrix(U);
 
     freeMemory(P);								  // deleting all variables with significant memory size
     freeMemory(A);
@@ -183,14 +194,16 @@ auto t1 = high_resolution_clock::now();             // starting timer
 
 int main(int argc, char* argv[])
 {
-    n = stoi(argv[1]), num_thread = stoi(argv[2]);
-
-    cout << "***********PTHREADS*************";
-    cout<< n <<" "<< num_thread<<"\n";
+    n = stoi(argv[1]), num_thread = stoi(argv[2]),testcase=argv[3];
+    if(argc>4 && stoi(argv[4])==1){
+        randomize=true;
+    }
+        
+    cout << "***********PTHREADS*************\n";
+    cout<<"size = "<< n <<" num_threads = "<<num_thread<<"\n";
     srand48((unsigned int) time(nullptr));        // seed for pseudo-random number generator
 
     lu_decomposition();
-
 
     return 0;
 }

@@ -1,2 +1,2 @@
 #!/bin/bash
-./assn1_openmp $1 $2
+./assn1_openmp $1 $2 $3 $4

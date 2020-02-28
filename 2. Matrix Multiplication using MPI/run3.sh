@@ -1,0 +1,1 @@
+mpirun -np $1 matmult_p2p_non_blocking

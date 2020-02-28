@@ -1,0 +1,1 @@
+mpirun -np $1 matmult_collective_comm $2

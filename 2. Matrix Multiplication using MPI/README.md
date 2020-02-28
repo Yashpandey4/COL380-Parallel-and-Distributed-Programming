@@ -37,7 +37,7 @@ Programming tasks
 Step 1: Install MPI libraries on your computer and make sure it works.
 
 Step 2: Create a function, Multiply_serial() to perform multiplication without parallelism. Example code (assuming that matrix elements are row-major stored in an array):
-
+```
 void Matrix_Multiply(float *A, float *B, float *C, int m, int n, int p){
 	int i, j, k;
 	for (i = 0; i < m; i++i){
@@ -48,11 +48,11 @@ void Matrix_Multiply(float *A, float *B, float *C, int m, int n, int p){
 		}
 	}
 }		
-
+```
 Create a function, IsEqual(), that examines if two matrices are exactly the same. The function should have the form:
-
+```
 int IsEqual(float *A, float *B, int m, int n)
-
+```
 In the function, we need to check if every pair of corresponding elements in A and B are the same. Once a discrepancy is found, the program can instantly return 0 (false). Return 1(true) if A and B are equal (no discrepancy is found). Later the function will be used to verify the results of your MPI programs. You can write a simple main() function to make sure IsEqual() works.
 
 Step 3: Implement your parallel algorithm in main() function, using blocking P2P communication (MPI_Send/MPI_Recv) between processes. main() should at least:
